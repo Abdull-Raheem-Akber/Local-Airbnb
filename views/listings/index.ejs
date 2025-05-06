@@ -1,0 +1,157 @@
+<% layout('/layouts/layout') -%>
+
+    <style>
+        .filters-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 40px 0px 40px;
+
+        }
+
+
+        a{
+            text-decoration: none;
+        }
+        .filter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .filter:hover {
+            opacity: 1;
+        }
+
+        .filter p {
+            font-size: 14px;
+        }
+
+        .taxinfo{
+            display: none;
+        }
+        .taxinfo.active{
+            display: inline;
+        }
+        .tax-toggle{
+            border: 1px solid rgba(0, 0, 0, 0.444);
+            border-radius: 20px;
+            height: 60px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+        }
+
+    </style>
+
+    <div class="filters-container">
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-water"></i></div>
+            <p>Beach</p>
+        </div>
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+            <p>Forest</p>
+          </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountain</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-tree"></i></div>
+            <p>Cabins</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-city"></i></div>
+            <p>City</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
+            <p>Arctic</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-hotel"></i></div>
+            <p>Luxury</p>
+        </div>
+
+        <div class="filter">
+            <div class="icon"><i class="fa-solid fa-sun"></i></div>
+            <p>Desert</p>
+        </div>
+
+        <div class="tax-toggle">
+            <div class="form-check form-switch">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after Taxes</label>
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+    <div class="data-container">
+        <!-- Bootstrap row with centered content -->
+        <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 justify-content-center">
+            <% for (let list of allListings) { %>
+                <a class="card-show" href="/listings/<%= list._id %>">
+                    <div class="card col" style="width: 18rem; margin: 10px">
+                        <img src="<%= list.img.url %>" class="card-img-top" alt="..." style="height: 18rem" />
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= list.title %>
+                                </b>
+                            </p>
+                            <p>
+                                <%= list.price ? list.price.toLocaleString('en-PK') : "Price not available" %>/night
+                                <i class="taxinfo" >  (Tax 18+ GST)</i>
+                            </p>
+                           
+                        </div>
+                    </div>
+                </a>
+                <% } %>
+        </div>
+    </div>
+
+
+    <script>
+        let TaxBtn = document.getElementById("flexSwitchCheckDefault");
+      
+        TaxBtn.addEventListener("click", () => {
+          let taxinfoElements = document.querySelectorAll(".taxinfo");
+      
+          for (let info of taxinfoElements) {
+            info.classList.toggle("active");
+          }
+      
+          console.log("Toggle done with for...of");
+        });
+      </script>
+      

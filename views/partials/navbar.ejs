@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .custom-search-bar {
+      display: flex;
+      align-items: center;
+      border: 1px solid #ddd;
+      border-radius: 30px;
+      padding: 5px 10px;
+      background-color: #f7f7f7;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .custom-search-bar .form-control {
+      border: none;
+      outline: none;
+      background: transparent;
+      box-shadow: none;
+      margin-right: 10px;
+    }
+
+    .custom-search-bar .form-control::placeholder {
+      color: #888;
+    }
+
+    .custom-search-bar .btn-outline-success {
+      border: none;
+      background-color: #ff385c;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .custom-search-bar .btn-outline-success:hover {
+      background-color: #e21c4f;
+    }
+
+    @media (max-width: 768px) {
+      .custom-search-bar {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md bg-white sticky-top">
+    <div class="container-fluid">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#"><i class="fa-brands fa-airbnb"></i> Airbnb</a>
+
+      <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Menu (Hidden on Small Screens) -->
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup flex">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/listings">
+            Explore
+          </a>
+        </div>
+
+
+
+        <form class=" navbar-nav ms-auto custom-search-bar form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Desitnation" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+          </button>
+        </form>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new">Airbnb Your Home </a>
+
+          <% if(!currentUser) { %>
+
+            <a class="nav-link" href="/signup"><b>Signup</b></a>
+            <a class="nav-link" href="/login"><b>Login</b></a>
+
+            <% } %>
+              <% if(currentUser) { %>
+
+                <a class="nav-link" href="/logout"><b>Logout</b></a>
+                <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</body>
+
+</html>

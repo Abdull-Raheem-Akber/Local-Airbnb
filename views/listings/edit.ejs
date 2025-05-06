@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <% layout('/layouts/layout') -%>
+
+        <!-- 
+    <form action="/listings/<%= listing._id %>?_method=PUT" method="POST">
+
+
+        <input name="title" value="<%= listing.title %>" type="text">
+        <br> <br>
+        <textarea name="des" cols="50" rows="20"> <%=  listing.des %> </textarea>
+        <br> <br>
+        <input name="img" value="<%=  listing.img %>" type="text">
+        <br> <br>
+        <input name="price" value="<%=listing.price%>" type="number">
+        <br> <br>
+        <input name="location" value="<%=listing.location%>" type="text">
+        <br> <br>
+        <input name="country" value="<%= listing.country%>" type="text">
+        <br> <br>
+        <button>Submit Your Data</button>
+
+    </form> -->
+
+
+        <div class="row container-fluid">
+            <div class="col-8 offset-2">
+                <form action="/listings/<%= listing._id %>?_method=PUT" method="POST" novalidate
+                    class="needs-validation " enctype="multipart/form-data">
+                    <h1 class="text-center">Update Listing</h1>
+
+                    <!-- Title Input -->
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input name="title" id="title" value="<%= listing.title %>" class="form-control" type="text"
+                            required>
+                        <div class="invalid-feedback"> Please Enter A Title</div>
+
+                    </div>
+
+                    <!-- Description Input -->
+                    <div class="mb-3">
+                        <label for="des" class="form-label">Description</label>
+                        <textarea name="des" id="des" class="form-control" rows="5"
+                            required><%= listing.des %></textarea>
+                        <div class="invalid-feedback"> Please Enter A Short Discription</div>
+
+                    </div>
+<div class="mb-3">
+Orignal Image Listing <br>
+<img src="<%= listing.img.url %>" height="200px" width="250px" alt="">
+
+</div>
+                    <!-- Image URL Input -->
+                    <div class="mb-3">
+                        <label for="img" class="form-label">Upload new Image</label>
+                        <input name="img" id="img" value="<%= listing.img %> " class="form-control"
+                            type="file">
+                    </div>
+                    <div class="row ">
+                        <!-- Price Input -->
+                        <div class="mb-3  col-md-4">
+                            <label for="price" class="form-label">Price</label>
+                            <input name="price" id="price" value="<%= listing.price %>" class="form-control"
+                                type="number" required>
+                            <div class="invalid-feedback"> Price Should Be Valid</div>
+
+                        </div>
+
+                        <!-- Location Input -->
+                        <div class="mb-3 col-md-8">
+                            <label for="location" class="form-label">Location</label>
+                            <input name="location" id="location" value="<%= listing.location %>" class="form-control"
+                                type="text" required>
+                            <div class="invalid-feedback"> Country Name Should Be Valid</div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Country Input -->
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input name="country" id="country" value="<%= listing.country %>" class="form-control"
+                            type="text" required>
+                        <div class="invalid-feedback"> Country Should Be Valid</div>
+
+                    </div>
+
+                    <button type="submit" class="btn btn-new">Submit Your Data</button>
+                    <br>
+                    <br>
+                </form>
+            </div>
+        </div>
+
+
+
+
+
+</body>
+
+</html>
